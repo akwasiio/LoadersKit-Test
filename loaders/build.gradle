@@ -90,9 +90,9 @@ def signingKeyPassphrase = findProperty("SIGNING_KEY_PASSPHRASE")
 //    exclude "**/R.java"
 //}
 //
-task javadocJar(type: Jar) {
-    archiveClassifier.set("javadoc")
-}
+//task javadocJar(type: Jar) {
+//    archiveClassifier.set("javadoc")
+//}
 
 
 task androidSourcesJar(type: Jar) {

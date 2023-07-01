@@ -25,7 +25,7 @@ jobs:
       - name: Release build
         run: |
           ./gradlew :loaders:assembleRelease
-          ./gradlew androidSourcesJar javadocJar
+          ./gradlew androidSourcesJar 
           ./gradlew -s publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
         env:
           ORG_GRADLE_PROJECT_LIBRARY_VERSION: ${{ github.event.release.tag_name }}
