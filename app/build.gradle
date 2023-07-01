@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+    id 'signing'
 }
 
 android {
@@ -65,4 +67,79 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-test-manifest"
 
     implementation project(":loaders")
+}
+
+def artifactId = "loaderskit"
+def ossrhUsername = findProperty("OSSRH_USERNAME")
+def ossrhPassword = findProperty("OSSRH_PASSWORD")
+def signingKeyId = findProperty("SIGNING_KEY_ID")
+def signingKey = findProperty("SIGNING_KEY")
+def signingKeyPassphrase = findProperty("SIGNING_KEY_PASSPHRASE")
+
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set("sources")
+    if (project.plugins.findPlugin("com.android.library")) {
+        from android.sourceSets.main.java.srcDirs
+        from android.sourceSets.main.kotlin.srcDirs
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = group
+                artifactId = artifactId
+                version = version
+
+                if (project.plugins.findPlugin("com.android.library")) {
+                    from components.release
+                }
+
+                pom {
+                    name = artifactId
+                    description = "Loaders Kit Android"
+                    url = "https://github.com/nouvell/loaderskit"
+                    licenses {
+                        license {
+                            name = "MIT License"
+                            url = "http://www.opensource.org/licenses/mit-license.php"
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = "being-eyram"
+                            name = "Eyram Hlorgbe"
+                            email = "eyrammichael@gmail.com"
+                        }
+                    }
+                    scm {
+                        connection = "scm:git:git:github.com/nouvell/loaderskit.git"
+                        developerConnection = "scm:git:ssh://github.com/nouvell/loaderskit.git"
+                        url = "https://github.com/speechly/android-client"
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = "sonatype"
+
+                def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots"
+                url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+
+                credentials {
+                    username = ossrhUsername
+                    password = ossrhPassword
+                }
+            }
+        }
+    }
+}
+
+signing {
+    useInMemoryPgpKeys(signingKeyId, signingKey, signingKeyPassphrase)
+    sign publishing.publications
 }
