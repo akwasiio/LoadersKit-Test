@@ -24,7 +24,7 @@ jobs:
         # Builds the release artifacts of the library
       - name: Release build
         run: |
-          ./gradlew :android-client:assembleRelease
+          ./gradlew :loaders:assembleRelease
           ./gradlew androidSourcesJar javadocJar
           ./gradlew -s publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
         env:

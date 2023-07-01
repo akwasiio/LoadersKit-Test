@@ -106,9 +106,9 @@ afterEvaluate {
                         }
                     }
                     scm {
-                        connection = "scm:git:git:github.com/nouvell/loaderskit.git"
-                        developerConnection = "scm:git:ssh://github.com/nouvell/loaderskit.git"
-                        url = "https://github.com/speechly/android-client"
+                        connection = "scm:git:git:github.com/Nouvell/Loaderskit-Test.git"
+                        developerConnection = "git@github.com:Nouvell/LoadersKit-Test.git"
+                        url = "https://github.com/Nouvell/LoadersKit-Test.git"
                     }
                 }
             }
