@@ -27,6 +27,8 @@ jobs:
           ./gradlew :loaders:assembleRelease
           ./gradlew androidSourcesJar 
           ./gradlew -s publishReleasePublicationToSonatypeRepository --max-workers 1 closeAndReleaseSonatypeStagingRepository
+          
+          echo ${secrets.ORG_GRADLE_PROJECT_SIGNING_KEY}
         env:
           ORG_GRADLE_PROJECT_LIBRARY_VERSION: ${{ github.event.release.tag_name }}
           ORG_GRADLE_PROJECT_OSSRH_USERNAME: ${{ secrets.ORG_GRADLE_PROJECT_OSSRH_USERNAME }}
