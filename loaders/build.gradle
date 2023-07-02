@@ -157,6 +157,8 @@ afterEvaluate {
     }
 }
 
+println(signingKey)
+
 signing {
     useInMemoryPgpKeys(signingKeyId, signingKey, signingKeyPassphrase)
     sign publishing.publications
