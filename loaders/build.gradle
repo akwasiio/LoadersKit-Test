@@ -115,8 +115,6 @@ afterEvaluate {
                     from components.release
                 }
 
-                artifact androidSourcesJar
-
                 pom {
                     name = artifactId
                     description = "Loaders Kit Android"
