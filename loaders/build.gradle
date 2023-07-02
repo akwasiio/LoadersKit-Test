@@ -63,8 +63,7 @@ def ossrhPassword = findProperty("OSSRH_PASSWORD")
 def signingKeyId = findProperty("SIGNING_KEY_ID")
 def signingKey = findProperty("SIGNING_KEY")
 def signingKeyPassphrase = findProperty("SIGNING_KEY_PASSPHRASE")
-def VERSION = '1.10' +
-        '-SNAPSHOT'
+def VERSION = '1.10'
 
 
 task androidSourcesJar(type: Jar) {
@@ -110,7 +109,7 @@ afterEvaluate {
             }
         }
 
-        repositories {
+        repositories {it.
             maven {
                 name = "sonatype"
                 def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/"
