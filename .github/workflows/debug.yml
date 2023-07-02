@@ -13,4 +13,4 @@ jobs:
 
     steps:
       - name: Print env variables
-        run: echo "secret ${{ secrets.ORG_GRADLE_PROJECT_SIGNING_KEY }} secretAlt ${{ secrets.SIGNING_KEY }}"
+        run: echo "secret ${{ secrets.ORG_GRADLE_PROJECT_SIGNING_KEY }}"
