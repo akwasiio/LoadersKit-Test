@@ -80,7 +80,7 @@ afterEvaluate {
                 from components.release
                 groupId = group
                 artifactId = "loaderskit"
-                version = android.defaultConfig.versionName
+                version = findProperty("VERSION_NAME")
 
                 pom {
                     name = artifactId
