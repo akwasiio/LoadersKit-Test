@@ -64,7 +64,6 @@ def signingKeyId = findProperty("SIGNING_KEY_ID")
 def signingKey = findProperty("SIGNING_KEY")
 def signingKeyPassphrase = findProperty("SIGNING_KEY_PASSPHRASE")
 
-def version = "1.7-SNAPSHOT"
 
 
 task androidSourcesJar(type: Jar) {
@@ -82,7 +81,7 @@ afterEvaluate {
                 from components.release
                 groupId = group
                 artifactId = "loaderskit"
-                version = version
+                version = '1.7-SNAPSHOT'
 
                 pom {
                     name = artifactId
