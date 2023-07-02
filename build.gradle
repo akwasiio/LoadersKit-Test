@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "io.github.being-eyram" // this needs to be at this level
-version = "1.0-SNAPSHOT"
+
 
 
 nexusPublishing {

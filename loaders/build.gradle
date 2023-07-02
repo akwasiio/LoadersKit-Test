@@ -62,7 +62,7 @@ def ossrhPassword = findProperty("OSSRH_PASSWORD")
 def signingKeyId = findProperty("SIGNING_KEY_ID")
 def signingKey = findProperty("SIGNING_KEY")
 def signingKeyPassphrase = findProperty("SIGNING_KEY_PASSPHRASE")
-
+version = "1.0-SNAPSHOT"
 
 task androidSourcesJar(type: Jar) {
     archiveClassifier.set("sources")
